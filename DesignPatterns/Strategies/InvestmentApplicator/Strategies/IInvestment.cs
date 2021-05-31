@@ -1,10 +1,7 @@
 ﻿namespace DesignPatterns
 {
-    internal static partial class Program
+    public interface IInvestment
     {
-        public interface IInvestment
-        {
-            double Apply(BankAccount bankAccount);
-        }
+        double Apply(BankAccount bankAccount);
     }
 }
