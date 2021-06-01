@@ -6,15 +6,13 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var icms = new Icms();
-            var iss = new Iss();
+            var request = new Request(Format.PERCENT);
 
-            var budget = new Budget(500.0);
+            var bankAccount = new BankAccount("Luiz", 200, "123-4", "98765432-1");
 
-            var taxCalculator = new TaxCalculator();
+            var requestChain = new RequestChain();
 
-            taxCalculator.Calculate(budget, icms);
-            taxCalculator.Calculate(budget, iss);
+            requestChain.PrintBankAccount(request, bankAccount);
 
             Console.ReadLine();
         }
