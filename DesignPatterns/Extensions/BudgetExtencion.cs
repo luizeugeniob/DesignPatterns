@@ -9,5 +9,8 @@ namespace DesignPatterns
 
         public static bool HasItemWithAmountGreaterThanOneHundred(this Budget budget)
             => budget.Items.Any(x => x.Amount > 100);
+
+        public static int QuantityOfItemsWithName(this Budget budget, string name)
+            => budget.Items.Count(x => x.Name.Equals(name));
     }
 }
