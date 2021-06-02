@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DesignPatterns
 {
@@ -6,13 +7,20 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var request = new Request(Format.PERCENT);
+            var account1 = new BankAccount("Fulano", 200, "123-4", "98765432-1");
+            account1.DepositsValue(1000);
 
-            var bankAccount = new BankAccount("Luiz", 200, "123-4", "98765432-1");
+            var account2 = new BankAccount("Ciclano", 200, "123-4", "87654321-9");
+            account2.DepositsValue(1500);
 
-            var requestChain = new RequestChain();
+            var account3 = new BankAccount("Beltrano", 200, "123-4", "76543219-8");
+            account3.DepositsValue(750);
 
-            requestChain.PrintBankAccount(request, bankAccount);
+            var bankAccounts = new List<BankAccount> { account1, account2, account3 };
+
+            var report = new SimpleReport();
+
+            report.PrintReport(bankAccounts);
 
             Console.ReadLine();
         }
