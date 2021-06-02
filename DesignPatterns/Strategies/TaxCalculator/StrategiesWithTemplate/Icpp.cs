@@ -2,17 +2,17 @@
 {
     public class Icpp : ConditionalTaxTemplate
     {
-        public override bool MustUseMaximumTax(Budget budget)
+        protected override bool MustUseMaximumTax(Budget budget)
         {
             return budget.Amount >= 500;
         }
 
-        public override double MaximumTax(Budget budget)
+        protected override double MaximumTax(Budget budget)
         {
             return budget.Amount * 0.07;
         }
 
-        public override double MinimumTax(Budget budget)
+        protected override double MinimumTax(Budget budget)
         {
             return budget.Amount * 0.05;
         }

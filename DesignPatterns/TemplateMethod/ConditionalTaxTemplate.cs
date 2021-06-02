@@ -12,8 +12,8 @@
             return MinimumTax(budget);
         }
 
-        public abstract bool MustUseMaximumTax(Budget budget);
-        public abstract double MaximumTax(Budget budget);
-        public abstract double MinimumTax(Budget budget);
+        protected abstract bool MustUseMaximumTax(Budget budget);
+        protected abstract double MaximumTax(Budget budget);
+        protected abstract double MinimumTax(Budget budget);
     }
 }
