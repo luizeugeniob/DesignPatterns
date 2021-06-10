@@ -1,10 +1,13 @@
 ﻿namespace DesignPatterns
 {
-    public class Iss : ITax
+    public class Iss : Tax
     {
-        public double Calculate(Budget budget)
+        public Iss(Tax anotherTax) : base(anotherTax) { }
+        public Iss() { }
+
+        public override double Calculate(Budget budget)
         {
-            return budget.Amount * 0.06;
+            return budget.Amount * 0.06 + CalculateAnotherTax(budget);
         }
     }
 }

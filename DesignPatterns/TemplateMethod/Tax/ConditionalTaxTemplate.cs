@@ -1,8 +1,8 @@
 ﻿namespace DesignPatterns
 {
-    public abstract class ConditionalTaxTemplate : ITax
+    public abstract class ConditionalTaxTemplate : Tax
     {
-        public double Calculate(Budget budget)
+        public override double Calculate(Budget budget)
         {
             if (MustUseMaximumTax(budget))
             {
