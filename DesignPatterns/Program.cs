@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var tax = new Iss(new Icms());
+            var tax = new Ikcv(new Icpp());
 
             var budget = new Budget(500);
 

@@ -2,6 +2,9 @@
 {
     public class Ihit : ConditionalTaxTemplate
     {
+        public Ihit(Tax anotherTax) : base(anotherTax) { }
+        public Ihit() { }
+
         protected override bool MustUseMaximumTax(Budget budget)
         {
             return HasTwoItemsWithSameName(budget);

@@ -2,6 +2,9 @@
 {
     public class Ikcv : ConditionalTaxTemplate
     {
+        public Ikcv(Tax anotherTax) : base(anotherTax) { }
+        public Ikcv() { }
+
         protected override bool MustUseMaximumTax(Budget budget)
         {
             return budget.Amount > 500 && budget.HasItemWithAmountGreaterThanOneHundred();

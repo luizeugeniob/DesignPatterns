@@ -7,7 +7,7 @@
 
         public override double Calculate(Budget budget)
         {
-            return budget.Amount * 0.1 + CalculateAnotherTax(budget);
+            return (budget.Amount * 0.1) + CalculateAnotherTax(budget);
         }
     }
 }

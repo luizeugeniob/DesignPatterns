@@ -2,14 +2,17 @@
 {
     public abstract class ConditionalTaxTemplate : Tax
     {
+        protected ConditionalTaxTemplate(Tax anotherTax) : base(anotherTax) { }
+        protected ConditionalTaxTemplate() { }
+
         public override double Calculate(Budget budget)
         {
             if (MustUseMaximumTax(budget))
             {
-                return MaximumTax(budget);
+                return MaximumTax(budget) + CalculateAnotherTax(budget);
             }
 
-            return MinimumTax(budget);
+            return MinimumTax(budget) + CalculateAnotherTax(budget);
         }
 
         protected abstract bool MustUseMaximumTax(Budget budget);
