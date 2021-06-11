@@ -6,20 +6,21 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var reform = new Budget(500);
+            var bankAccount = new BankAccount(
+                "Fulano",
+                200,
+                "123-4",
+                "98765432-1",
+                DateTime.Now);
 
-            Console.WriteLine(reform.Amount);
+            bankAccount.Deposit(500);
+            Console.WriteLine(bankAccount.Balance);
 
-            reform.ApplyExtraDiscount();
-            Console.WriteLine(reform.Amount);
+            bankAccount.Withdraw(550);
+            Console.WriteLine(bankAccount.Balance);
 
-            reform.Approves();
-
-            reform.ApplyExtraDiscount();
-            reform.ApplyExtraDiscount();
-            Console.WriteLine(reform.Amount);
-
-            reform.Finalize();
+            bankAccount.Deposit(60);
+            Console.WriteLine(bankAccount.Balance);
 
             Console.ReadLine();
         }

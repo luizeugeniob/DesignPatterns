@@ -8,8 +8,9 @@ namespace DesignPatterns
         public int BankCode { get; private set; }
         public string AgencyNumber { get; private set; }
         public string AccountNumber { get; private set; }
-        public double Balance { get; private set; }
+        public double Balance { get; set; }
         public DateTime OpeningDate { get; private set; }
+        public IBankAccountState State { get; set; }
 
         public BankAccount(
             string holder,
@@ -23,11 +24,17 @@ namespace DesignPatterns
             AgencyNumber = agencyNumber;
             AccountNumber = accountNumber;
             OpeningDate = openingDate;
+            State = new PositiveBalance();
         }
 
-        public void DepositsValue(double amount)
+        public void Deposit(double amount)
         {
-            Balance += amount;
+            State.Deposit(this, amount);
+        }
+
+        public void Withdraw(double amount)
+        {
+            State.Withdraw(this, amount);
         }
 
         public override bool Equals(object obj)

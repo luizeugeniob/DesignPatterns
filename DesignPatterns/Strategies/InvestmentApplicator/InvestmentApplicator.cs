@@ -7,7 +7,7 @@ namespace DesignPatterns
         public void ApplyInvestment(BankAccount bankAccount, IInvestment investment)
         {
             var result = investment.Apply(bankAccount);
-            bankAccount.DepositsValue(result);
+            bankAccount.Deposit(result);
             Console.WriteLine("Novo saldo: " + bankAccount.Balance);
         }
     }
