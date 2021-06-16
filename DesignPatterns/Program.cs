@@ -16,6 +16,10 @@ namespace DesignPatterns
                 .OnDate(new DateTime(1994, 6, 5))
                 .WithObservation("Entrega urgente.");
 
+            invoiceBuilder.AddAction(new InvoiceRepository());
+            invoiceBuilder.AddAction(new SendEmail());
+            invoiceBuilder.AddAction(new SendSms());
+
             var invoice = invoiceBuilder.Build();
 
             Console.WriteLine(invoice.GrossAmount);

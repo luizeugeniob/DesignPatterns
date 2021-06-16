@@ -19,9 +19,12 @@ namespace DesignPatterns
             IssueDate = DateTime.Now;
         }
 
+        private readonly IList<IActionsAfterGeneratingInvoice> actionsAfterGeneratingInvoice =
+            new List<IActionsAfterGeneratingInvoice>();
+
         public Invoice Build()
         {
-            return new Invoice(
+            var invoice = new Invoice(
                 CompanyName,
                 Cnpj,
                 IssueDate,
@@ -29,6 +32,18 @@ namespace DesignPatterns
                 tax,
                 items,
                 Observation);
+
+            foreach (var action in actionsAfterGeneratingInvoice)
+            {
+                action.Execute(invoice);
+            }
+
+            return invoice;
+        }
+
+        public void AddAction(IActionsAfterGeneratingInvoice newAction)
+        {
+            actionsAfterGeneratingInvoice.Add(newAction);
         }
 
         public InvoiceBuilder ForCompany(string companyName)
