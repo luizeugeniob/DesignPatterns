@@ -14,6 +14,11 @@ namespace DesignPatterns
         private double tax;
         private readonly IList<InvoiceItem> items = new List<InvoiceItem>();
 
+        public InvoiceBuilder()
+        {
+            IssueDate = DateTime.Now;
+        }
+
         public Invoice Build()
         {
             return new Invoice(
@@ -44,9 +49,9 @@ namespace DesignPatterns
             return this;
         }
 
-        public InvoiceBuilder OnCurrentDate()
+        public InvoiceBuilder OnDate(DateTime issueDate)
         {
-            IssueDate = DateTime.Now;
+            IssueDate = issueDate;
             return this;
         }
 

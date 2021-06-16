@@ -13,13 +13,14 @@ namespace DesignPatterns
                 .WithCnpj("00.000.000/0001-00")
                 .WithItem(new InvoiceItem("Item 1", 150.50))
                 .WithItem(new InvoiceItem("Item 2", 230.90))
-                .OnCurrentDate()
+                .OnDate(new DateTime(1994, 6, 5))
                 .WithObservation("Entrega urgente.");
 
             var invoice = invoiceBuilder.Build();
 
             Console.WriteLine(invoice.GrossAmount);
             Console.WriteLine(invoice.Tax);
+            Console.WriteLine(invoice.IssueDate);
 
             Console.ReadLine();
         }
