@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DesignPatterns
 {
@@ -6,38 +7,18 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var musicalNotes = new MusicalNotes();
+            var historic = new ContractHistoric();
 
-            var music = new List<INote>
-            {
-                musicalNotes.Get("do"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("mi"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("do"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("do"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("do"),
-                musicalNotes.Get("sol"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("mi"),
-                musicalNotes.Get("mi"),
-                musicalNotes.Get("mi"),
-                musicalNotes.Get("do"),
-                musicalNotes.Get("re"),
-                musicalNotes.Get("mi"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("fa"),
-                musicalNotes.Get("fa"),
-            };
+            var contract = new Contract(DateTime.Now, "Luiz", ContractType.New);
+            historic.Add(contract.SaveState());
 
-            var piano = new Piano();
-            piano.Play(music);
+            contract.Next();
+            historic.Add(contract.SaveState());
+
+            contract.Next();
+            historic.Add(contract.SaveState());
+
+            Console.WriteLine(historic.Get(1).Contract.Type);
         }
     }
 }
