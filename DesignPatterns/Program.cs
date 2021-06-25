@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace DesignPatterns
 {
@@ -7,18 +7,16 @@ namespace DesignPatterns
     {
         private static void Main(string[] args)
         {
-            var historic = new ContractHistoric();
+            var left = new Sum(new Sum(new Number(1), new Number(100)), new Number(10));
+            var right = new Subtraction(new Number(20), new Number(10));
+            var result = new Sum(left, right);
 
-            var contract = new Contract(DateTime.Now, "Luiz", ContractType.New);
-            historic.Add(contract.SaveState());
+            Console.WriteLine(result.Evaluate());
 
-            contract.Next();
-            historic.Add(contract.SaveState());
-
-            contract.Next();
-            historic.Add(contract.SaveState());
-
-            Console.WriteLine(historic.Get(1).Contract.Type);
+            //Exemplo de Interpreter do próprio C#
+            Expression expression = Expression.Add(Expression.Constant(10), Expression.Constant(100));
+            var function = Expression.Lambda<Func<int>>(expression).Compile();
+            Console.WriteLine(function());
         }
     }
 }
