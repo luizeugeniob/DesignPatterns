@@ -10,7 +10,7 @@ namespace DesignPatterns
             var left = new Sum(new Sum(new Number(1), new Number(100)), new Number(10));
             var right = new Subtraction(new Number(20), new Number(10));
             var multiplication = new Multiplication(left, right);
-            var result = new Division(multiplication, new Number(2));
+            var result = new SquareRoot(multiplication);
 
             Console.WriteLine(result.Evaluate());
 
