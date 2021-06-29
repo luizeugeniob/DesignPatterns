@@ -2,18 +2,23 @@
 {
     public class Subtraction : IExpression
     {
-        private readonly IExpression left;
-        private readonly IExpression right;
+        public IExpression Left { get; private set; }
+        public IExpression Right { get; private set; }
 
         public Subtraction(IExpression left, IExpression right)
         {
-            this.left = left;
-            this.right = right;
+            Left = left;
+            Right = right;
         }
 
         public int Evaluate()
         {
-            return left.Evaluate() - right.Evaluate();
+            return Left.Evaluate() - Right.Evaluate();
+        }
+
+        public void Print(IVisitorPrinter printer)
+        {
+            printer.PrintSubtraction(this);
         }
     }
 }

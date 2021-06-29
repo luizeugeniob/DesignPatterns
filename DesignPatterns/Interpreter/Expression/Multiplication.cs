@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns
+﻿using System;
+
+namespace DesignPatterns
 {
     public class Multiplication : IExpression
     {
@@ -14,6 +16,11 @@
         public int Evaluate()
         {
             return left.Evaluate() * right.Evaluate();
+        }
+
+        public void Print(IVisitorPrinter printer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,5 +15,10 @@ namespace DesignPatterns
         {
             return (int)Math.Sqrt(expression.Evaluate());
         }
+
+        public void Print(IVisitorPrinter printer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

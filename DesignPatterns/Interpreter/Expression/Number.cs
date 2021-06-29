@@ -2,16 +2,21 @@
 {
     public class Number : IExpression
     {
-        private readonly int number;
+        public int Value { get; private set; }
 
         public Number(int number)
         {
-            this.number = number;
+            Value = number;
         }
 
         public int Evaluate()
         {
-            return number;
+            return Value;
+        }
+
+        public void Print(IVisitorPrinter printer)
+        {
+            printer.PrintNumber(this);
         }
     }
 }
