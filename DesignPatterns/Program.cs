@@ -12,7 +12,7 @@ namespace DesignPatterns
 
             Console.WriteLine(result.Evaluate());
 
-            var printer = new VisitorPrinter();
+            var printer = new WeirdoVisitorPrinter();
             result.Print(printer);
         }
     }
