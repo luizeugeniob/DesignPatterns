@@ -1,19 +1,16 @@
-﻿using System;
-
-namespace DesignPatterns
+﻿namespace DesignPatterns
 {
     internal static class Program
     {
         private static void Main(string[] args)
         {
-            var left = new Sum(new Sum(new Number(1), new Number(100)), new Number(10));
-            var right = new Subtraction(new Number(20), new Number(10));
-            var result = new Sum(left, right);
+            var mailMessage = new AdminMessage("Luiz");
 
-            Console.WriteLine(result.Evaluate());
+            mailMessage.Sender = new Bridges.SendSms(); // Fazendo uma ponte entre a Message e o Sender
+            mailMessage.Send();
 
-            var printer = new WeirdoVisitorPrinter();
-            result.Print(printer);
+            mailMessage.Sender = new Bridges.SendEmail();
+            mailMessage.Send();
         }
     }
 }
