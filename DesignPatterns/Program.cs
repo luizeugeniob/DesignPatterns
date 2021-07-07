@@ -1,20 +1,23 @@
-﻿namespace DesignPatterns
+﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+
+namespace DesignPatterns
 {
     internal static class Program
     {
         private static void Main(string[] args)
         {
-            var queue = new WorkQueue();
+            var customer = new Customer
+            {
+                Name = "Fulano",
+                Address = "Rua dos bobos",
+                BirthDate = DateTime.Now
+            };
 
-            var order1 = new Order("Beltrano", 100);
-            var order2 = new Order("Fulano", 200);
+            var xml = new XmlGenerator().GenerateXml(customer);
 
-            queue.Add(new PaidOrder(order1));
-            queue.Add(new PaidOrder(order2));
-
-            queue.Add(new EndOrder(order1));
-
-            queue.Proccess();
+            Console.WriteLine(xml);
         }
     }
 }
