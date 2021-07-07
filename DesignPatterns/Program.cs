@@ -4,13 +4,17 @@
     {
         private static void Main(string[] args)
         {
-            var mailMessage = new AdminMessage("Luiz");
+            var queue = new WorkQueue();
 
-            mailMessage.Sender = new Bridges.SendSms(); // Fazendo uma ponte entre a Message e o Sender
-            mailMessage.Send();
+            var order1 = new Order("Beltrano", 100);
+            var order2 = new Order("Fulano", 200);
 
-            mailMessage.Sender = new Bridges.SendEmail();
-            mailMessage.Send();
+            queue.Add(new PaidOrder(order1));
+            queue.Add(new PaidOrder(order2));
+
+            queue.Add(new EndOrder(order1));
+
+            queue.Proccess();
         }
     }
 }
